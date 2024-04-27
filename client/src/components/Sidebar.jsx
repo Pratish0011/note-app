@@ -59,7 +59,7 @@ const Sidebar = () => {
             <Link
               key={i}
               to={val.path}
-              className="hover:text-red-500 text-white m-4 bg-[#DCDCDC] w-[15rem] text-center bg-opacity-[53%] h-10 flex items-center justify-center"
+              className="hover:text-[#cef151] text-white m-4 bg-[#DCDCDC] w-[15rem] text-center bg-opacity-[53%] h-10 flex items-center justify-center font-semibold"
             >
               {val.title}
             </Link>
