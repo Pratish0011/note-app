@@ -1,46 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect} from "react";
 import Completed from "../utils/Completed";
 import Favourite from "../utils/Favourite";
+import axios from "axios";
 
 const Card = () => {
-  let cardDetails = [
-    {
-      title: ["Gracathon"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-    {
-      title: ["Gracathon 2.0"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-    {
-      title: ["Gracathon 2.0"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-    {
-      title: ["Gracathon"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-    {
-      title: ["Gracathon 2.0"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-    {
-      title: ["Gracathon 2.0"],
-      content: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
-      ],
-    },
-  ];
+  // let cardDetails = [
+  //   {
+  //     title: ["Gracathon"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  //   {
+  //     title: ["Gracathon 2.0"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  //   {
+  //     title: ["Gracathon 2.0"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  //   {
+  //     title: ["Gracathon"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  //   {
+  //     title: ["Gracathon 2.0"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  //   {
+  //     title: ["Gracathon 2.0"],
+  //     content: [
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi temporibus sapiente quod, est molestias vitae cum commodi eius nulla debitis. Ipsa, consequuntur? ",
+  //     ],
+  //   },
+  // ];
+
+  const getCardDetails = async ()=>{
+     try { 
+      const res = await axios.get("http://localhost:3000/")
+      setCardDetails(res.data)
+     } catch (error) {
+      console.log(error)
+     }
+  }
+
+  const [cardDetails, setCardDetails] = useState([])
+
+  useEffect(() => {
+    getCardDetails()
+  },[])
+  
+
 
   return (
     <div className="grid grid-cols-3 gap-10 gap-y-4 w-full">
